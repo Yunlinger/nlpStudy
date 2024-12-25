@@ -12,7 +12,6 @@ import torch
 
 
 def tokenize_data(sentence):
-    sentence = str(sentence) if pd.notna(sentence) else ''
     return list(jieba.cut(sentence))
 
 def train_word2vec(data):
@@ -75,6 +74,7 @@ max_len = max(len(list(jieba.cut(str(text)))) for text in df['text'])
 texts = df['text'].values
 labels = df['label'].values
 text_tensors, label_tensors = process_data(texts, labels, word2vec_model, max_len)
+print(label_tensors.shape)
 # 划分训练集和验证集
 X_train, X_val, y_train, y_val = train_test_split(
     text_tensors, label_tensors, 

@@ -20,7 +20,7 @@ def predict(text,model,word2vec_model):
     
 if __name__ == '__main__':
     sentiment_map = {0: "消极", 1: "积极"}
-    text = "汽车很费油"
+    text = "好漂亮"
     word2vec_model = Word2Vec.load(os.path.join(os.path.dirname(__file__),'data','word2vec.model'))
     vocab_size = word2vec_model.vector_size
     model = LSTMClassifier(vocab_size=vocab_size,hidden_dim=128,num_layers=2,num_classes=2)
